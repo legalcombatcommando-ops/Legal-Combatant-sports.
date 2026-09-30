@@ -1,0 +1,38 @@
+# One-command deploy on any server with Docker:
+#   1. cp .env.example .env   and fill in the values (at least POSTGRES_PASSWORD and ADMIN_PASSCODE)
+#   2. docker compose up -d --build
+# The site listens on http://<server>:3000. Put a reverse proxy (Caddy, Nginx, Cloudflare) in front for HTTPS.
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: app_db
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d app_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  web:
+    build:
+      context: .
+      args:
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-}
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: postgresql://postgres:${POSTGRES_PASSWORD}@db:5432/app_db
+    ports:
+      - "3000:3000"
+
+volumes:
+  pgdata:

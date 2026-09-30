@@ -1,0 +1,111 @@
+/* ===== Revamp layer: one black / charcoal / white / red identity across the whole site =====
+   Loaded last. Every fill that used to be lime is now red with white text (contrast >= 5.7:1). */
+:root {
+  --red: #c81d25;
+  --red-hover: #e02a31;
+  --red-soft: #fdeceb;
+  --ring: #ff5a52;
+}
+
+::selection { background: var(--red); color: #fff; }
+:focus-visible { outline-color: var(--ring); }
+.skip-link { background: var(--red); color: #fff; }
+
+/* Header: sticky, translucent, with a red hairline */
+.site-header { position: sticky; top: 0; background: rgba(10, 10, 11, .92); -webkit-backdrop-filter: saturate(1.2) blur(14px); backdrop-filter: saturate(1.2) blur(14px); }
+.site-header::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px; background: linear-gradient(90deg, transparent, rgba(255, 90, 82, .75), transparent); pointer-events: none; }
+#intro, #niches, #services, #approach, #who-we-help, #road, #insights, #contact, #onboarding-form { scroll-margin-top: 100px; }
+.join-aside, .article-aside { top: 112px; }
+.brand-symbol { background: var(--red); color: #fff; }
+.header-cta { border-color: rgba(255, 90, 82, .7); }
+.header-cta:hover { background: var(--red); border-color: var(--red); color: #fff; }
+
+/* Buttons and controls */
+.button-lime { background: var(--red); color: #fff; }
+.button-lime:hover { background: var(--red-hover); }
+.archive-cta .button-lime { background: var(--ink); color: #fff; }
+.archive-cta .button-lime:hover { background: #2a2a2d; }
+.form-submit { background: var(--red); color: #fff; }
+.form-submit:hover:not(:disabled) { background: var(--red-hover); }
+.form-success-icon, .onboard-success-check { background: var(--red); color: #fff; }
+.contact-wa-link { background: var(--red); color: #fff; }
+.contact-wa-link:hover { background: var(--red-hover); }
+.faq-item.is-open .faq-icon { background: var(--red); border-color: var(--red); color: #fff; }
+.note-dot { background: var(--ring); box-shadow: 0 0 0 4px rgba(255, 90, 82, .18); }
+
+/* Bands and large fills */
+.ticker-band { background: var(--red); color: #fff; }
+.next-article { background: var(--red); color: #fff; }
+.next-article-contact { border-bottom-color: #fff; }
+.journal-image-arrow { background: var(--red); color: #fff; }
+
+/* Service cards: hover to black instead of a colour flood */
+.service-card { border-top-color: var(--red); }
+.service-card:hover { background: var(--ink); color: var(--paper); }
+.service-card:hover .service-card-top { color: var(--paper); }
+.service-card:hover .service-card-bottom p { color: #cfcfcb; }
+.service-card:hover .service-card-link { border-top-color: rgba(255, 255, 255, .3); color: #fff; }
+
+/* Audience panel */
+.audience-panel { background: var(--red); color: #fff; }
+.audience-panel ul { border-top-color: rgba(255, 255, 255, .4); }
+.audience-panel .dark-link, .audience-panel .dark-link:hover { color: #fff; }
+.audience-tab.is-active { background: var(--ink); }
+
+/* Niche, founder and division blocks */
+.niche-card:hover { background: var(--red); border-color: var(--red); color: #fff; }
+.niche-card:hover .niche-card-top, .niche-card:hover .niche-verb { color: #fff; }
+.niche-card:hover .niche-text { color: rgba(255, 255, 255, .92); }
+.founder-vm-grid article.is-mission { background: var(--red); border-color: var(--red); color: #fff; }
+.founder-vm-grid article.is-mission svg { color: #fff; }
+.founder-pillar-cards > a.is-baseline { background: var(--red); border-color: var(--red); color: #fff; }
+.founder-pillar-cards > a.is-baseline svg { color: #fff; }
+.founder-pillar-cards > a.is-baseline p { color: rgba(255, 255, 255, .92); }
+.founder-cta-grid a:hover { background: var(--red); border-color: var(--red); color: #fff; }
+.founder-cta-grid a:hover span { color: #fff; }
+.division-offering-grid article { border-top-color: var(--red); }
+.division-offering-grid article:hover { background: var(--red-soft); }
+.division-cta { background: var(--red); color: #fff; }
+.division-cta .section-kicker { color: #fff; }
+.division-cta h2 em { color: #0a0a0b; }
+.division-cta .division-note, .division-cta .division-note-light { color: rgba(255, 255, 255, .9); }
+.division-cta-links, .division-cta-links a { border-color: #fff; }
+.division-cta-links a:hover { background: rgba(0, 0, 0, .16); }
+
+/* Onboarding selection states */
+.onboard-need-card.is-selected { border-color: var(--red); background: var(--red-soft); }
+.onboard-need-card.is-selected .onboard-need-icon { color: var(--red); }
+.onboard-summary { background: var(--red-soft); }
+.onboard-summary > div span { border-color: #efb4b1; color: #5a1a1e; }
+.onboard-preferences label.is-selected { border-color: var(--red); background: var(--red); color: #fff; }
+.onboard-progress li.is-complete { border-color: var(--red); }
+.onboard-progress li.is-complete .onboard-step-number { border-color: var(--red); background: var(--red); color: #fff; }
+.onboard-field input:focus, .onboard-field select:focus, .onboard-field textarea:focus { border-color: var(--red); box-shadow: 0 0 0 2px rgba(200, 29, 37, .18); }
+
+/* Hero: stronger contrast for the new red-lit photography, with a soft red glow */
+.hero-overlay { background: linear-gradient(90deg, rgba(10, 10, 11, .9) 0%, rgba(10, 10, 11, .62) 34%, rgba(10, 10, 11, .04) 72%), linear-gradient(0deg, rgba(10, 10, 11, .88) 0%, transparent 26%); }
+.hero-section::after { content: ""; position: absolute; right: -10%; bottom: -30%; width: 60%; height: 90%; background: radial-gradient(closest-side, rgba(200, 29, 37, .28), transparent); pointer-events: none; }
+.site-footer { border-top: 2px solid var(--red); }
+.journal-image img, .approach-image img { filter: saturate(.92) contrast(1.04); }
+
+/* New: the road ahead */
+.road-section { background: var(--ink); color: var(--paper); }
+.road-section .section-heading-row h2 em { color: var(--ring); }
+.road-section .section-heading-row > p { color: #c9c9c6; }
+.road-steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 56px 0 0; padding: 0; list-style: none; }
+.road-steps li { position: relative; min-height: 270px; display: flex; flex-direction: column; padding: 26px; border: 1px solid rgba(255, 255, 255, .2); background: #17171a; }
+.road-steps li::before { content: ""; position: absolute; left: -1px; top: -1px; width: 56px; height: 3px; background: var(--red); }
+.road-steps li > span { color: var(--ring); font-size: 10px; font-weight: 800; letter-spacing: .14em; }
+.road-steps h3 { margin: auto 0 11px; font-family: "Barlow Condensed", Impact, sans-serif; font-size: 46px; font-weight: 800; line-height: .9; text-transform: uppercase; }
+.road-steps p { margin: 0; color: #c9c9c6; font-size: 13px; line-height: 1.65; }
+.road-motto { margin: 52px 0 0; padding-top: 28px; border-top: 1px solid rgba(255, 255, 255, .2); font-family: "Barlow Condensed", Impact, sans-serif; font-size: clamp(40px, 5vw, 78px); font-weight: 800; letter-spacing: -.015em; line-height: .92; text-transform: uppercase; }
+.road-motto em { color: var(--ring); font-style: normal; }
+
+@media (max-width: 960px) {
+  .road-steps { grid-template-columns: 1fr; }
+  .road-steps li { min-height: 200px; }
+  .join-aside { top: auto; }
+}
+@media (max-width: 560px) {
+  .road-motto { font-size: clamp(34px, 9.6vw, 46px); }
+}
